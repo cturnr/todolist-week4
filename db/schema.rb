@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616192600) do
+ActiveRecord::Schema.define(version: 20160617065126) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "gender"
@@ -27,29 +27,29 @@ ActiveRecord::Schema.define(version: 20160616192600) do
     t.date     "due_date"
     t.string   "title"
     t.text     "description"
-    t.boolean  "completed"
-    t.integer  "TodoList_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "completed",    default: false
+    t.integer  "todo_list_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "todo_items", ["TodoList_id"], name: "index_todo_items_on_TodoList_id"
+  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
 
   create_table "todo_lists", force: :cascade do |t|
     t.string   "list_name"
     t.date     "list_due_date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
+
+  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "user_id"
   end
-
-  add_index "users", ["user_id"], name: "index_users_on_user_id"
 
 end
