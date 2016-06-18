@@ -3,9 +3,7 @@ class Profile < ActiveRecord::Base
 
   validate :first_or_last, :male_named_sue
   validates_inclusion_of :gender, :in => ["male", "female"]
-  # validates_numericality_of :first_name, allow_nil: true
-  # validates_numericality_of :last_name, allow_nil: true
-
+  
 
 def first_or_last
   if !first_name.present? && !last_name.present?
