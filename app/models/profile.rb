@@ -3,6 +3,11 @@ class Profile < ActiveRecord::Base
 
   validate :first_or_last, :male_named_sue
   validates_inclusion_of :gender, :in => ["male", "female"]
+
+  def self.get_all_profiles(min_year, max_year)
+  	Profile.where("birth_year BETWEEN ? AND ?", min_year, max_year).order('birth_year asc').to_a
+  	
+  end
   
 
 def first_or_last
@@ -17,5 +22,7 @@ def male_named_sue
   end
 end
 
+def get_all_profiles
+end
 
 end
