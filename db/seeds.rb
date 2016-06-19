@@ -38,11 +38,6 @@ TodoList.destroy_all
 @user3.todo_lists << @list3
 @user4.todo_lists << @list4
 
-# @user1.todo_lists << TodoList.create!(list_name: "Carly list", list_due_date: Date.today + 1.year)
-# @user2.todo_lists << TodoList.create!(list_name: "Trump list", list_due_date: Date.today + 1.year)
-# @user3.todo_lists << TodoList.create!(list_name: "Carson List", list_due_date: Date.today + 1.year)
-# @user4.todo_lists << TodoList.create!(list_name: "Hillary List", list_due_date: Date.today + 1.year)
-
 
 @list1.todo_items << TodoItem.create!(due_date: Date.today + 1.year, title: "This", description: "This is the string1")
 @list1.todo_items << TodoItem.create!(due_date: Date.today + 1.year, title: "This too", description: "This string is great")
